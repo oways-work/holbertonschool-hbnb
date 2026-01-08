@@ -13,7 +13,7 @@ The project follows a layered architecture pattern:
 
 ## 🚀 Setup & Installation
 
-1. **Clone the repository** (if not already done):
+1. **Clone the repository**:
    ```bash
    git clone [https://github.com/oways-work/holbertonschool-hbnb](https://github.com/oways-work/holbertonschool-hbnb)
    cd holbertonschool-hbnb/part2
