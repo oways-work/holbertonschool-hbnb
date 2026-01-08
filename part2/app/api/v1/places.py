@@ -18,6 +18,7 @@ user_model = api.model('PlaceUser', {
 
 # Define the input model for Place
 place_model = api.model('Place', {
+    'id': fields.String(readonly=True, description='Place unique identifier'),
     'title': fields.String(required=True, description='Title of the place'),
     'description': fields.String(description='Description of the place'),
     'price': fields.Float(required=True, description='Price per night'),
@@ -35,23 +36,26 @@ class PlaceList(Resource):
         """Create a new place"""
         place_data = api.payload
         
-        # Validate owner exists
+        # 1. Validate owner exists
         user = facade.get_user(place_data['owner_id'])
         if not user:
             return {'error': 'Owner not found'}, 400
             
-        # Validate price, latitude, longitude (Basic logic)
+        # 2. Validate price
         if place_data['price'] < 0:
             return {'error': 'Price must be non-negative'}, 400
+        
+        # 3. Extract amenity_ids from the data so they don't cause a crash
+        amenity_ids = place_data.pop('amenity_ids', [])
             
+        # 4. Create the place
         new_place = facade.create_place(place_data)
         
-        # Process amenities if provided
-        if 'amenity_ids' in place_data:
-             for amenity_id in place_data['amenity_ids']:
-                 amenity = facade.get_amenity(amenity_id)
-                 if amenity:
-                     new_place.add_amenity(amenity)
+        # 5. Link the amenities to the new place
+        for amenity_id in amenity_ids:
+            amenity = facade.get_amenity(amenity_id)
+            if amenity:
+                new_place.add_amenity(amenity)
                      
         return new_place, 201
 

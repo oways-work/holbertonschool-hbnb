@@ -5,6 +5,7 @@ api = Namespace('reviews', description='Review operations')
 
 # Define the review model for input
 review_model = api.model('Review', {
+    'id': fields.String(readonly=True, description='Review unique identifier'),
     'text': fields.String(required=True, description='Text of the review'),
     'rating': fields.Integer(required=True, description='Rating of the place (1-5)'),
     'user_id': fields.String(required=True, description='ID of the user'),
@@ -29,13 +30,13 @@ class ReviewList(Resource):
         if not place:
             return {'error': 'Place not found'}, 400
             
-        # 3. Validate Rating (Logic is also in Model, but good to check here)
+        # 3. Validate Rating
         if not (1 <= review_data['rating'] <= 5):
              return {'error': 'Rating must be between 1 and 5'}, 400
 
         new_review = facade.create_review(review_data)
         
-        # Link review to place (so we can retrieve it later)
+        # Link review to place
         place.add_review(new_review)
         
         return new_review, 201
