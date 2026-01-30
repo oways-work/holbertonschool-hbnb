@@ -1,6 +1,7 @@
 """
 BaseModel Module
 """
+
 import uuid
 from datetime import datetime
 
@@ -8,8 +9,9 @@ from datetime import datetime
 class BaseModel:
     """
     Base class for all models in the HBnB application.
-    Handles ID generation and timestamp management.
+    Handles ID generation, timestamps, and safe serialization.
     """
+
     def __init__(self):
         """Initialize a new instance with UUID and timestamps."""
         self.id = str(uuid.uuid4())
@@ -27,4 +29,25 @@ class BaseModel:
         for key, value in data.items():
             if hasattr(self, key):
                 setattr(self, key, value)
-        self.save()  # Update the updated_at timestamp
+        self.save()
+
+    def to_dict(self):
+        """
+        Convert the object to a dictionary.
+        Excludes sensitive fields like password_hash.
+        """
+        result = {}
+
+        for key, value in self.__dict__.items():
+            # 🚫 Never expose password hashes
+            if key == 'password_hash':
+                continue
+
+            # Convert datetime objects to ISO format
+            if isinstance(value, datetime):
+                result[key] = value.isoformat()
+            else:
+                result[key] = value
+
+        return result
+

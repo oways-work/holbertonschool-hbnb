@@ -64,5 +64,7 @@ class UserResource(Resource):
             return {'error': 'User not found'}, 404
 
         # Update user logic (in real app, handle password hashing)
+        user_data.pop('password', None)
+
         user.update(user_data)
         return user

@@ -22,10 +22,20 @@ class HBnBFacade:
 
     # --- User Logic ---
     def create_user(self, user_data):
-        """Create a new user."""
-        user = User(**user_data)
-        self.user_repo.add(user)
-        return user
+    """Create a new user with a hashed password."""
+    password = user_data.pop('password')
+
+    user = User(
+        first_name=user_data['first_name'],
+        last_name=user_data['last_name'],
+        email=user_data['email'],
+        is_admin=user_data.get('is_admin', False)
+    )
+
+    user.set_password(password)
+    self.user_repo.add(user)
+    return user
+
 
     def get_user(self, user_id):
         """Get a user by ID."""
