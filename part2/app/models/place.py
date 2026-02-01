@@ -3,13 +3,11 @@ Place Model Module
 """
 from app.models.base import BaseModel
 
-
 class Place(BaseModel):
     """
     Represents a place (listing) in the HBnB application.
     """
-    def __init__(self, title, description, price, latitude, longitude,
-                 owner_id):
+    def __init__(self, title, description, price, latitude, longitude, owner_id):
         """Initialize a new Place instance."""
         super().__init__()
         self.title = title
@@ -18,8 +16,44 @@ class Place(BaseModel):
         self.latitude = latitude
         self.longitude = longitude
         self.owner_id = owner_id
-        self.reviews = []  # List to store related reviews
-        self.amenities = []  # List to store related amenities
+        self.reviews = []
+        self.amenities = []
+
+    @property
+    def price(self):
+        """Getter for price."""
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        """Setter for price. Validates that it is non-negative."""
+        if value < 0:
+            raise ValueError("Price must be non-negative")
+        self._price = value
+
+    @property
+    def latitude(self):
+        """Getter for latitude."""
+        return self._latitude
+
+    @latitude.setter
+    def latitude(self, value):
+        """Setter for latitude. Validates range -90 to 90."""
+        if not (-90.0 <= value <= 90.0):
+            raise ValueError("Latitude must be between -90 and 90")
+        self._latitude = value
+
+    @property
+    def longitude(self):
+        """Getter for longitude."""
+        return self._longitude
+
+    @longitude.setter
+    def longitude(self, value):
+        """Setter for longitude. Validates range -180 to 180."""
+        if not (-180.0 <= value <= 180.0):
+            raise ValueError("Longitude must be between -180 and 180")
+        self._longitude = value
 
     def add_review(self, review):
         """Add a review to the place."""

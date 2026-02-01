@@ -3,7 +3,6 @@ User Model Module
 """
 from app.models.base import BaseModel
 
-
 class User(BaseModel):
     """
     Represents a user in the HBnB application.
@@ -18,3 +17,27 @@ class User(BaseModel):
         self.is_admin = is_admin
         self.places = []
         self.reviews = []
+
+    @property
+    def first_name(self):
+        """Getter for first_name."""
+        return self._first_name
+
+    @first_name.setter
+    def first_name(self, value):
+        """Setter for first_name. Validates length."""
+        if not value or len(value) > 50:
+            raise ValueError("First name must be 50 characters or less")
+        self._first_name = value
+
+    @property
+    def email(self):
+        """Getter for email."""
+        return self._email
+
+    @email.setter
+    def email(self, value):
+        """Setter for email. Validates simple format."""
+        if not value or "@" not in value or "." not in value:
+            raise ValueError("Invalid email format")
+        self._email = value
