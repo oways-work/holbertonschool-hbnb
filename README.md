@@ -16,10 +16,19 @@ This repository contains the progressive development of the **HBnB Evolution** p
   - **In-Memory Persistence**: A temporary storage system for development.
 - **How to Run:** Navigate to the `part2` directory and follow the [Part 2 README](./part2/README.md).
 
+### [Part 3: Database & Authentication](./part3/)
+- **Focus:** Transitioning to persistent storage, securing the API, and refining relationships.
+- **Key Features:**
+  - **SQLAlchemy & SQLite**: Replaced in-memory storage with a relational database (SQLite for dev, adaptable to MySQL).
+  - **JWT Authentication**: Secured endpoints using JSON Web Tokens via `Flask-JWT-Extended`.
+  - **Security**: Password hashing using `bcrypt`.
+  - **Complex Relationships**: Implemented One-to-Many and Many-to-Many relationships (e.g., Places ↔ Amenities).
+- **How to Run:** Navigate to the `part3` directory and follow the [Part 3 README](./part3/README.md).
+
 ## 🛠 Technologies
 - **Language:** Python 3.x
-- **Framework:** Flask, Flask-RESTx
-- **Tools:** Git, Swagger UI, cURL
+- **Framework:** Flask, Flask-RESTx, Flask-SQLAlchemy, Flask-JWT-Extended
+- **Tools:** Git, Swagger UI, cURL, SQLite
 
 ## Authors
 * **OWAYS Abdulhakim Aljbreen**
