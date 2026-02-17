@@ -26,8 +26,7 @@ This directory contains the client-side application for the HBnB project. It use
    - Server returns an `access_token`.
    - JavaScript saves this token in a cookie.
    python3 -m http.server 8000server:t.our backend is already running on port 5000): `Authorization` header.
-> ^C
-ois@OIS:~/holbertonschool-hbnb$ cat > part4/README.md << 'EOF'
+
 # HBnB Evolution - Part 4: Frontend Client
 
 This directory contains the client-side application for the HBnB project. It uses vanilla JavaScript to interact with the backend API dynamically, providing a responsive user experience without page reloads.
