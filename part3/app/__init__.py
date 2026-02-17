@@ -1,9 +1,15 @@
 from flask import Flask, redirect
+from flask_cors import CORS
+from flask_cors import CORS
+from flask_cors import CORS
 from flask_restx import Api
 from app.extensions import db, bcrypt, jwt
 
 def create_app(config_class="config.DevelopmentConfig"):
     app = Flask(__name__)
+    CORS(app)  # Enable CORS for all routes
+    CORS(app)  # Enable CORS for all routes
+    CORS(app)  # Enable CORS for all routes
     app.config.from_object(config_class)
 
     db.init_app(app)

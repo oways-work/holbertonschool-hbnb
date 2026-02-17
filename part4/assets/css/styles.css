@@ -1,0 +1,86 @@
+/* HBnB Evolution - Global Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: white;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Card Grid */
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Fixed Parameters for Cards & Forms: Margin 20px, Padding 10px, Border #ddd */
+.place-card, .form, .place-details-container {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px; /* Equivalent to margin 20px between elements */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.place-card h3 {
+    margin-top: 0;
+    color: #ff5a5f;
+}
+
+.details-button, button {
+    display: inline-block;
+    background-color: #ff5a5f;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.details-button:hover, button:hover {
+    background-color: #e04e53;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}

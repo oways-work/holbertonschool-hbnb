@@ -56,9 +56,8 @@ CREATE TABLE IF NOT EXISTS place_amenity (
 );
 
 -- Initial Data (Admin User)
--- Password hash for 'admin1234' (example hash)
 INSERT INTO users (id, first_name, last_name, email, password, is_admin)
-VALUES ('36c9050e-577e-44d2-a4f6-bd98e5d51327', 'Admin', 'HBnB', 'admin@hbnb.io', '$2b$12$YourHashedPasswordHere...', TRUE);
+VALUES ('36c9050e-577e-44d2-a4f6-bd98e5d51327', 'Admin', 'HBnB', 'admin@hbnb.io', '$2b$12$OaGGiPSgoJgLpoxebDmitu2gUME5SviTOgrteV.sUxEWKDc/AceDq', TRUE);
 
 -- Initial Data (Amenities)
 INSERT INTO amenities (id, name) VALUES (lower(hex(randomblob(16))), 'WiFi');
