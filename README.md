@@ -25,10 +25,19 @@ This repository contains the progressive development of the **HBnB Evolution** p
   - **Complex Relationships**: Implemented One-to-Many and Many-to-Many relationships (e.g., Places ↔ Amenities).
 - **How to Run:** Navigate to the `part3` directory and follow the [Part 3 README](./part3/README.md).
 
+### [Part 4: Frontend Client](./part4/)
+- **Focus:** Implementing a dynamic client-side interface to interact with the API.
+- **Key Features:**
+  - **Dynamic Content**: Uses JavaScript `fetch` API to load Places and Reviews without reloading the page.
+  - **Secure Login**: Manages JWT tokens via browser cookies for authenticated actions.
+  - **Interactive UI**: Users can view details and submit reviews in real-time.
+  - **CORS Support**: Integrated with the backend to allow cross-origin requests.
+- **How to Run:** Run `python3 -m http.server 8000` in the root directory and open `localhost:8000/part4/`.
+
 ## 🛠 Technologies
-- **Language:** Python 3.x
+- **Language:** Python 3.x, JavaScript (ES6)
 - **Framework:** Flask, Flask-RESTx, Flask-SQLAlchemy, Flask-JWT-Extended
-- **Tools:** Git, Swagger UI, cURL, SQLite
+- **Tools:** Git, Swagger UI, cURL, SQLite, HTML5, CSS3
 
 ## Authors
 * **OWAYS Abdulhakim Aljbreen**
