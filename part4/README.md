@@ -25,4 +25,17 @@ This directory contains the client-side application for the HBnB project. It use
    - User enters credentials -> `POST /api/v1/auth/login`.
    - Server returns an `access_token`.
    - JavaScript saves this token in a cookie.
-   python3 -m http.server 8000server:t.our backend is already running on port 5000): `Authorization` header.
+   - Subsequent requests (like `POST /reviews/`) read this cookie and send it in the `Authorization` header.
+
+2. **Data Fetching:**
+   - The `index.html` loads empty.
+   - `scripts.js` immediately sends a `GET /api/v1/places/` request.
+   - The JSON response is looped through to create HTML cards dynamically.
+
+## 🚀 Usage
+To run *only* this frontend (assuming your backend is already running on port 5000):
+
+1. Open a terminal in the project root.
+2. Run the simple Python HTTP server:
+   ```bash
+   python3 -m http.server 8000
